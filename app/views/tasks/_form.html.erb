@@ -3,15 +3,7 @@
     <%= form_with(model: task, local: true) do |f| %>
         
       <!-- エラーメッセージ -->
-      <% if @task.errors.any? %>
-        <div id="error-explanation" class="alert alert-warning">
-          <ul>
-            <% @task.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= render 'layouts/error_messages', model: f.object %>
           
       <div class="form-group">
         <%= f.label :content, 'タスク' %>
