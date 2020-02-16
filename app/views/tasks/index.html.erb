@@ -3,23 +3,29 @@
   <h1><%= current_user.name %>さんのタスク一覧</h1>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>タスク名</th>
-      <th>タスク状態</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-    <tr>
-        <td><%= link_to task.id, task %></td>
-        <td><%= task.content %></td>
-        <td><%= task.status %></td>
+<% if @tasks.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>タスク名</th>
+        <th>タスク状態</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
- 
-<%= paginate @tasks %>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr>
+          <td><%= link_to task.id, task %></td>
+          <td><%= task.content %></td>
+          <td><%= task.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+   
+  <%= paginate @tasks %>
+<% else %>
+  <div class="text-center mb-4">
+    <p>タスク未登録です。タスクを登録して管理をしましょう。</p>
+  </div>
+<% end %>

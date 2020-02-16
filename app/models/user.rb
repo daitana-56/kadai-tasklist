@@ -10,4 +10,7 @@ class User < ApplicationRecord
   
   #passwordに関するセッティング
   has_secure_password
+  
+  #参照
+  has_many :tasks
 end
